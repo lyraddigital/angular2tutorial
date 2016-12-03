@@ -9,11 +9,16 @@ import { RestApiService } from '../../shared/restapi.service';
   styleUrls: ['./player-list.component.css']
 })
 export class PlayerListComponent implements OnInit {
+  selectedPlayer: Player;
   listOfPlayers: Player[];
 
   constructor(private apiService: RestApiService) {}
 
   ngOnInit() {
     this.listOfPlayers = this.apiService.getListOfPlayers();
+  }
+
+  setSelectedPlayer(selectedPlayer: Player) {
+    this.selectedPlayer = selectedPlayer;
   }
 }
