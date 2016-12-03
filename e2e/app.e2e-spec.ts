@@ -1,4 +1,4 @@
-import { Angular2tutorialPage } from './app.po';
+import { Angular2tutorialPage } from './app.po'; 
 
 describe('angular2tutorial App', function() {
   let page: Angular2tutorialPage;
