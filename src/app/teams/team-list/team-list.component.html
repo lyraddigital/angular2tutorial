@@ -1,22 +1,18 @@
 <h2>Teams</h2>
 
 <table>
-  <thead>
-    <tr>
-      <th>Team Name</th>
-      <th>Wins</th>
-      <th>Losses</th>
-      <th>Winning %</th>
-      <th>Games Behind</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let team of listOfTeams">
-      <td>{{team.teamName}}</td>
-      <td>{{team.numberOfWins}}</td>
-      <td>{{team.numberOfLosses}}</td>
-      <td>{{team.winPercentage}}</td>
-      <td>{{team.gamesBehind}}</td>
-    </tr>
-  </tbody>
+  <tr>
+    <th>Team Name</th>
+    <th>Wins</th>
+    <th>Losses</th>
+    <th>Winning %</th>
+    <th>Games Behind</th>
+  </tr>
+  <tr *ngFor="let team of listOfTeams">
+    <td>{{team.teamName}}</td>
+    <td>{{team.numberOfWins}}</td>
+    <td>{{team.numberOfLosses}}</td>
+    <td>{{team.winPercentage}}</td>
+    <td>{{team.gamesBehind}}</td>
+  </tr>
 </table>
