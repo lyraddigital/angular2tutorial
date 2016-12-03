@@ -11,3 +11,15 @@
 .table-striped tbody tr:nth-of-type(odd):hover {
     background: #0069EE;
 }
+
+.table-striped tbody tr {
+    cursor: pointer;
+}
+
+.table-striped tbody tr:nth-of-type(odd) a {
+    color: #FFF;
+}
+
+.table-striped tbody tr:nth-of-type(even) a {
+    color: #006BB6;
+}

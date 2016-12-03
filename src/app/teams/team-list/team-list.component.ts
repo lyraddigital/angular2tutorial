@@ -10,10 +10,15 @@ import { RestApiService } from '../../shared/restapi.service';
 })
 export class TeamListComponent implements OnInit {
   listOfTeams: Team[];
+  selectedTeam: Team;
 
   constructor(private apiService: RestApiService) {}
 
   ngOnInit() {
     this.listOfTeams = this.apiService.getListOfTeams();
+  }
+
+  selectTeam(selectedTeam: Team) {
+    this.selectedTeam = selectedTeam;
   }
 }
