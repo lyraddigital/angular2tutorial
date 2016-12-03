@@ -1,0 +1,24 @@
+.table-striped tr {
+    color: #FFF;
+}
+
+.table-striped thead tr {
+    background: #232;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #94163F;
+}
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+    background: #AF163F;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+    background: #FFCA5B;
+    color: #232;
+}
+
+.table-striped tbody tr:nth-of-type(even):hover {
+    background: #FFDC5B;
+}

@@ -1,0 +1,13 @@
+.table-striped thead tr {
+    background: #232;
+    color: #FFF;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background: #006BB6;
+    color: #FFF;
+}
+
+.table-striped tbody tr:nth-of-type(odd):hover {
+    background: #0069EE;
+}
