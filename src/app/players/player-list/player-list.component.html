@@ -1,22 +1,18 @@
 <h2>Players</h2>
 
 <table>
-  <thead>
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Position</th>
-      <th>Height</th>
-      <th>Weight (lbs)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let player of listOfPlayers">
-      <td>{{player.firstName}}</td>
-      <td>{{player.lastName}}</td>
-      <td>{{player.position}}</td>
-      <td>{{player.height}}</td>
-      <td>{{player.weight}}</td>
-    </tr>
-  </tbody>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Position</th>
+    <th>Height</th>
+    <th>Weight (lbs)</th>
+  </tr>
+  <tr *ngFor="let player of listOfPlayers">
+    <td>{{player.firstName}}</td>
+    <td>{{player.lastName}}</td>
+    <td>{{player.position}}</td>
+    <td>{{player.height}}</td>
+    <td>{{player.weight}}</td>
+  </tr>
 </table>
