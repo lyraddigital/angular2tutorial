@@ -1,10 +1,5 @@
 <h2>Register</h2>
 
-{{registrationViewModel.weight}} <br />
-{{registrationViewModel.position}} <br />
-{{registrationViewModel.injuries}} <br />
-{{registrationViewModel.password}} <br />
-
 <form>
   <div class="form-group">
     <label for="firstName">First Name</label>
@@ -30,11 +25,7 @@
     <label for="teamId">Team</label>
     <select id="teamId" name="teamId" class="form-control" [(ngModel)]="registrationViewModel.teamId">
       <option>Please Select...</option>
-      <option value="1">Atlanta Hawks</option>
-      <option value="2">Boston Celtics</option>
-      <option value="3">Charlotte Hornets</option>
-      <option value="4">Chicago Bulls</option>
-      <option value="5">Cleveland Cavaliers</option>
+      <option *ngFor="let team of teamLookupList" [value]="team.Id">{{team.Name}}</option>
     </select>
   </div>
   <div class="form-group">
@@ -96,17 +87,9 @@
     <div class="form-group">
       <label for="brokenFoot">Past Injuries</label>
       <div>
-        <label class="form-check-inline">
-          <input type="checkbox" class="form-check-input" id="brokenFoot" name="brokenFoot" value="Broken Foot" (change)="addOrRemoveInjury($event.target.value)" />
-          Broken Foot
-        </label>
-        <label class="form-check-inline">
-          <input type="checkbox" class="form-check-input" id="kneeInjury" name="kneeInjury" value="Knee Injury" (change)="addOrRemoveInjury($event.target.value)" />
-          Knee Injury
-        </label>
-        <label class="form-check-inline">
-          <input type="checkbox" class="form-check-input" id="ankleInjury" name="ankleInjury" value="Ankle Injury" (change)="addOrRemoveInjury($event.target.value)" />
-          Ankle Injury
+        <label class="form-check-inline" *ngFor="let injury of injuryLookupList; let i = index;">
+          <input type="checkbox" class="form-check-input" [id]="injuryFieldList[i]" [name]="injuryFieldList[i]" [value]="injury" (change)="addOrRemoveInjury($event.target.value)" />
+          {{injury}}
         </label>
       </div>
     </div>
