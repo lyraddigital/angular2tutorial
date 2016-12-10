@@ -1,163 +1,103 @@
 <h2>Register</h2>
 
 <form #registrationForm="ngForm">
-  <div class="form-group" 
-       [class.has-success]="firstName.dirty && firstName.valid"
-       [class.has-danger]="firstName.dirty && firstName.invalid">
-    
+  <div class="form-group">
     <label for="firstName">First Name</label>
     
-    <input type="text" 
-           class="form-control" 
-           [class.form-control-success] = "firstName.valid" 
-           [class.form-control-danger] = "firstName.invalid" 
-           id="firstName" 
-           #firstName="ngModel" 
-           name="firstName" 
-           [(ngModel)]="registrationViewModel.firstName" 
-           required 
-           placeholder="Enter first name" />
-  </div>
-  <div class="form-group" 
-       [class.has-success]="lastName.dirty && lastName.valid"
-       [class.has-danger]="lastName.dirty && lastName.invalid">
+    <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="registrationViewModel.firstName" 
+           required placeholder="Enter first name" />
 
+    <div *ngIf="formErrors.firstName" class="alert alert-danger">
+      {{ formErrors.firstName }}
+    </div>
+  </div>
+  <div class="form-group">
     <label for="lastName">Last Name</label>
 
-    <input type="text" 
-           class="form-control" 
-           [class.form-control-success] = "lastName.valid" 
-           [class.form-control-danger] = "lastName.invalid"
-           id="lastName" 
-           #lastName="ngModel" 
-           name="lastName" 
-           [(ngModel)]="registrationViewModel.lastName" 
-           required 
-           placeholder="Enter last name" />
+    <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="registrationViewModel.lastName" 
+           required placeholder="Enter last name" />
+
+    <div *ngIf="formErrors.lastName" class="alert alert-danger">
+      {{ formErrors.lastName }}
+    </div>
   </div>
-  <div class="form-group" 
-       [class.has-success]="email.dirty && email.valid"
-       [class.has-danger]="email.dirty && email.invalid">
-    
+  <div class="form-group">
     <label for="email">Email</label>
     
-    <input type="email" 
-           class="form-control" 
-           [class.form-control-success] = "email.valid" 
-           [class.form-control-danger] = "email.invalid"
-           id="email" 
-           #email="ngModel" 
-           name="email" 
-           [(ngModel)]="registrationViewModel.email" 
-           required 
-           placeholder="Enter email" />
+    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registrationViewModel.email" 
+           required placeholder="Enter email" />
+
+    <div *ngIf="formErrors.email" class="alert alert-danger">
+      {{ formErrors.email }}
+    </div>
   </div>
   <div class="form-group">
     <label for="biography">Biography</label>
     
-    <textarea 
-          class="form-control" 
-          id="biography" 
-          name="biography" 
-          [(ngModel)]="registrationViewModel.biography" 
-          rows="5" 
-          placeholder="Enter biography">
+    <textarea class="form-control" id="biography" name="biography" [(ngModel)]="registrationViewModel.biography" 
+          rows="5" placeholder="Enter biography">
     </textarea>
   </div>
-  <div class="form-group"
-       [class.has-success]="dob.dirty && dob.valid"
-       [class.has-danger]="dob.dirty && dob.invalid">
-    
+  <div class="form-group">
     <label for="dob">DOB</label>
     
-    <input type="date" 
-           class="form-control" 
-           [class.form-control-success] = "dob.valid" 
-           [class.form-control-danger] = "dob.invalid"
-           id="dob" 
-           #dob="ngModel"
-           name="dob" 
-           [(ngModel)]="registrationViewModel.dob" 
-           required 
-           placeholder="Enter DOB" />
-  </div>
-  <div class="form-group" 
-       [class.has-success]="teamId.dirty && teamId.valid"
-       [class.has-danger]="teamId.dirty && teamId.invalid">
+    <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="registrationViewModel.dob" 
+           required placeholder="Enter DOB" />
 
+    <div *ngIf="formErrors.dob" class="alert alert-danger">
+      {{ formErrors.dob }}
+    </div>
+  </div>
+  <div class="form-group">
     <label for="teamId">Team</label>
 
-    <select id="teamId" 
-            #teamId="ngModel"
-            name="teamId" 
-            class="form-control" 
-            [class.form-control-success] = "teamId.valid" 
-            [class.form-control-danger] = "teamId.invalid"
-            [(ngModel)]="registrationViewModel.teamId" 
-            required>
+    <select id="teamId" name="teamId" class="form-control" [(ngModel)]="registrationViewModel.teamId" required>
       <option value="">Please Select...</option>
       <option *ngFor="let team of teamLookupList" [value]="team.Id">{{team.Name}}</option>
     </select>
+    
+    <div *ngIf="formErrors.teamId" class="alert alert-danger">
+      {{ formErrors.teamId }}
+    </div>
   </div>
   <div class="form-group">
     <label for="heightInFeet">Height</label>
     <div class="row">
-      <div class="col-xs-4 col-sm-2 form-group"
-           [class.has-success]="heightInFeet.dirty && heightInFeet.valid"
-           [class.has-danger]="heightInFeet.dirty && heightInFeet.invalid">
+      <div class="col-xs-4 col-sm-2 form-group">
+        <input type="number" class="form-control" id="heightInFeet" name="heightInFeet" [(ngModel)]="registrationViewModel.heightInFeet" 
+               required placeholder="Enter in feet" />
 
-        <input type="number" 
-               class="form-control" 
-               [class.form-control-success] = "heightInFeet.valid" 
-               [class.form-control-danger] = "heightInFeet.invalid"
-               id="heightInFeet" 
-               #heightInFeet="ngModel" 
-               name="heightInFeet" 
-               [(ngModel)]="registrationViewModel.heightInFeet" 
-               required 
-               placeholder="Enter in feet" />
+        <div *ngIf="formErrors.heightInFeet" class="alert alert-danger">
+          {{ formErrors.heightInFeet }}
+        </div>
       </div>
       <div class="col-xs-1 height-label">feet</div>
-      <div class="col-xs-4 col-sm-2 form-group"
-           [class.has-success]="heightInInches.dirty && heightInInches.valid"
-           [class.has-danger]="heightInInches.dirty && heightInInches.invalid">
-        <input type="number" 
-               class="form-control" 
-               [class.form-control-success] = "heightInInches.valid" 
-               [class.form-control-danger] = "heightInInches.invalid"
-               id="heightInInches"
-               #heightInInches="ngModel"
-               name="heightInInches" 
-               [(ngModel)]="registrationViewModel.heightInInches" 
-               required 
-               placeholder="Enter in inches" />
+      <div class="col-xs-4 col-sm-2 form-group">
+        <input type="number" class="form-control" id="heightInInches" name="heightInInches" [(ngModel)]="registrationViewModel.heightInInches" 
+               required placeholder="Enter in inches" />
+
+        <div *ngIf="formErrors.heightInInches" class="alert alert-danger">
+          {{ formErrors.heightInInches }}
+        </div>
       </div>
       <div class="col-xs-1 height-label">inches</div>
     </div>
   </div>
-  <div class="form-group"
-       [class.has-success]="weight.dirty && weight.valid"
-       [class.has-danger]="weight.dirty && weight.invalid">
+  <div class="form-group">
     <label for="weight">Weight</label>
     <div class="row">
       <div class="col-xs-4 col-sm-2">
-        <input type="number" 
-               class="form-control" 
-               [class.form-control-success] = "weight.valid" 
-               [class.form-control-danger] = "weight.invalid"
-               id="weight" 
-               #weight="ngModel"
-               name="weight" 
-               [(ngModel)]="registrationViewModel.weight" 
-               required 
-               placeholder="Enter in pounds" />
+        <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="registrationViewModel.weight" 
+               required placeholder="Enter in pounds" />
+
+        <div *ngIf="formErrors.weight" class="alert alert-danger">
+          {{ formErrors.weight }}
+        </div>
       </div>
       <div class="col-xs-1 weight-label">lbs</div>
     </div>
   </div>
-  <div class="form-group"
-       [class.has-success]="position.dirty && position.valid"
-       [class.has-danger]="position.dirty && position.invalid">
+  <div class="form-group">
     <label for="pointGuard">Position</label>
     <div>
       <div class="form-check-inline">
@@ -191,6 +131,9 @@
         </label>
       </div>
     </div>
+    <div *ngIf="formErrors.position" class="alert alert-danger">
+      {{ formErrors.position }}
+    </div>
   </div>
   <div class="form-group">
     <label for="brokenFoot">Past Injuries</label>
@@ -201,22 +144,15 @@
       </label>
     </div>
   </div>
-  <div class="form-group"
-        [class.has-success]="password.dirty && password.valid"
-        [class.has-danger]="password.dirty && password.invalid">
-    
+  <div class="form-group">
     <label for="password">Password</label>
     
-    <input type="password" 
-            class="form-control" 
-            [class.form-control-success] = "password.valid" 
-            [class.form-control-danger] = "password.invalid"
-            id="password"
-            #password="ngModel" 
-            name="password" 
-            [(ngModel)]="registrationViewModel.password" 
-            required 
-            placeholder="Enter password" />
+    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="registrationViewModel.password" 
+            required placeholder="Enter password" />
+
+    <div *ngIf="formErrors.password" class="alert alert-danger">
+      {{ formErrors.password }}
+    </div>
   </div>
   <div>
     <button type="button" class="btn btn-default btn-primary" [disabled]="registrationForm.form.invalid">Submit</button>
