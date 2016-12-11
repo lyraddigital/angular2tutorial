@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { PlayersRoutingModule } from './players.routing';
@@ -10,6 +10,6 @@ import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
     declarations: [PlayerListComponent, PlayerProfileComponent, RegistrationComponent],
-    imports: [BrowserModule, FormsModule, SharedModule, PlayersRoutingModule]
+    imports: [BrowserModule, ReactiveFormsModule, SharedModule, PlayersRoutingModule]
 })
 export class PlayersModule { }

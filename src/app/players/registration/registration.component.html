@@ -1,11 +1,9 @@
 <h2>Register</h2>
-
-<form #registrationForm="ngForm">
+{{registrationForm.firstName}}
+<form [formGroup]="registrationForm" autocomplete="off" novalidate>
   <div class="form-group">
     <label for="firstName">First Name</label>
-    
-    <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="registrationViewModel.firstName" 
-           required placeholder="Enter first name" />
+    <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Enter first name" required />
 
     <div *ngIf="formErrors.firstName" class="alert alert-danger">
       {{ formErrors.firstName }}
@@ -13,9 +11,7 @@
   </div>
   <div class="form-group">
     <label for="lastName">Last Name</label>
-
-    <input type="text" class="form-control" id="lastName" name="lastName" [(ngModel)]="registrationViewModel.lastName" 
-           required placeholder="Enter last name" />
+    <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Enter last name" required />
 
     <div *ngIf="formErrors.lastName" class="alert alert-danger">
       {{ formErrors.lastName }}
@@ -23,9 +19,7 @@
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    
-    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="registrationViewModel.email" 
-           required placeholder="Enter email" />
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email" required />
 
     <div *ngIf="formErrors.email" class="alert alert-danger">
       {{ formErrors.email }}
@@ -33,16 +27,11 @@
   </div>
   <div class="form-group">
     <label for="biography">Biography</label>
-    
-    <textarea class="form-control" id="biography" name="biography" [(ngModel)]="registrationViewModel.biography" 
-          rows="5" placeholder="Enter biography">
-    </textarea>
+    <textarea class="form-control" id="biography" formControlName="biography" rows="5" placeholder="Enter biography"></textarea>
   </div>
   <div class="form-group">
     <label for="dob">DOB</label>
-    
-    <input type="date" class="form-control" id="dob" name="dob" [(ngModel)]="registrationViewModel.dob" 
-           required placeholder="Enter DOB" />
+    <input type="date" class="form-control" id="dob" formControlName="dob" placeholder="Enter DOB" required />
 
     <div *ngIf="formErrors.dob" class="alert alert-danger">
       {{ formErrors.dob }}
@@ -50,8 +39,7 @@
   </div>
   <div class="form-group">
     <label for="teamId">Team</label>
-
-    <select id="teamId" name="teamId" class="form-control" [(ngModel)]="registrationViewModel.teamId" required>
+    <select class="form-control" id="teamId" formControlName="teamId" required>
       <option value="">Please Select...</option>
       <option *ngFor="let team of teamLookupList" [value]="team.Id">{{team.Name}}</option>
     </select>
@@ -64,8 +52,7 @@
     <label for="heightInFeet">Height</label>
     <div class="row">
       <div class="col-xs-4 col-sm-2 form-group">
-        <input type="number" class="form-control" id="heightInFeet" name="heightInFeet" [(ngModel)]="registrationViewModel.heightInFeet" 
-               required placeholder="Enter in feet" />
+        <input type="number" class="form-control" id="heightInFeet" formControlName="heightInFeet" placeholder="Enter in feet" required />
 
         <div *ngIf="formErrors.heightInFeet" class="alert alert-danger">
           {{ formErrors.heightInFeet }}
@@ -73,8 +60,7 @@
       </div>
       <div class="col-xs-1 height-label">feet</div>
       <div class="col-xs-4 col-sm-2 form-group">
-        <input type="number" class="form-control" id="heightInInches" name="heightInInches" [(ngModel)]="registrationViewModel.heightInInches" 
-               required placeholder="Enter in inches" />
+        <input type="number" class="form-control" id="heightInInches" formControlName="heightInInches" placeholder="Enter in inches" required />
 
         <div *ngIf="formErrors.heightInInches" class="alert alert-danger">
           {{ formErrors.heightInInches }}
@@ -87,8 +73,7 @@
     <label for="weight">Weight</label>
     <div class="row">
       <div class="col-xs-4 col-sm-2">
-        <input type="number" class="form-control" id="weight" name="weight" [(ngModel)]="registrationViewModel.weight" 
-               required placeholder="Enter in pounds" />
+        <input type="number" class="form-control" id="weight" formControlName="weight" placeholder="Enter in pounds" required />
 
         <div *ngIf="formErrors.weight" class="alert alert-danger">
           {{ formErrors.weight }}
@@ -102,31 +87,31 @@
     <div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" #position="ngModel" name="position" id="pointGuard" [(ngModel)]="registrationViewModel.position" required value="PointGuard" />
+          <input type="radio" class="form-check-input" formControlName="position" id="pointGuard" required value="PointGuard" />
           Point Guard
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" #position="ngModel" name="position" id="shootingGuard" [(ngModel)]="registrationViewModel.position" value="ShootingGuard" />
+          <input type="radio" class="form-check-input" formControlName="position" id="shootingGuard" value="ShootingGuard" />
           Shooting Guard
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" #position="ngModel" name="position" id="smallForward" [(ngModel)]="registrationViewModel.position" value="SmallForward" />
+          <input type="radio" class="form-check-input" formControlName="position" id="smallForward" value="SmallForward" />
           Small Forward
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" #position="ngModel" name="position" id="powerForward" [(ngModel)]="registrationViewModel.position" value="PowerForward" />
+          <input type="radio" class="form-check-input" formControlName="position" id="powerForward" value="PowerForward" />
           Power Forward
         </label>
       </div>
       <div class="form-check-inline">
         <label class="form-check-label">
-          <input type="radio" class="form-check-input" #position="ngModel" name="position" id="center" [(ngModel)]="registrationViewModel.position" value="Center" />
+          <input type="radio" class="form-check-input" formControlName="position" id="center" value="Center" />
           Center
         </label>
       </div>
@@ -146,15 +131,13 @@
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    
-    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="registrationViewModel.password" 
-            required placeholder="Enter password" />
+    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Enter password" required />
 
     <div *ngIf="formErrors.password" class="alert alert-danger">
       {{ formErrors.password }}
     </div>
   </div>
   <div>
-    <button type="button" class="btn btn-default btn-primary" [disabled]="registrationForm.form.invalid">Submit</button>
+    <button type="button" class="btn btn-default btn-primary" [disabled]="registrationForm.invalid" (click)="submit()">Submit</button>
   </div>
 </form>
