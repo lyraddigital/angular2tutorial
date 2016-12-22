@@ -1,4 +1,4 @@
-export class Player {
+export class BasketballPlayer {
     firstName: string;
     lastName: string;
     position: string;

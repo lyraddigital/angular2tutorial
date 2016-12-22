@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Player } from '../../shared/players/player';
+import { BasketballPlayer } from '../../shared/players/basketball-player';
 
 @Component({
   selector: 'app-player-profile',
@@ -9,5 +9,5 @@ import { Player } from '../../shared/players/player';
 })
 export class PlayerProfileComponent {
   @Input()
-  selectedPlayer: Player
+  selectedPlayer: BasketballPlayer
 }

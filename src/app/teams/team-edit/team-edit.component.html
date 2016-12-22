@@ -1,16 +1,22 @@
-<form name="editTeamName" *ngIf="selectedTeam">
+<form [formGroup]="teamEditForm" *ngIf="selectedTeam">
   <h2>Edit Team</h2>
-  <div class="form-group">
-    <label for="teamName">Team Name</label>
-    <input type="text" class="form-control" [(ngModel)]="selectedTeam.teamName" name="teamName" id="teamName" placeholder="Enter team name" />
+  <div class="form-group" *ngFor="let field of formFields">
+    <label [for]="field.key">Team Name</label>    
+    
+    <div [ngSwitch]="field.fieldType">
+        <input *ngSwitchCase="0" [type]="field.textTypeName" class="form-control" [formControlName]="field.key" [name]="field.key" [id]="field.key" [placeholder]="field.placeholder" />
+
+        <select *ngSwitchCase="1">
+        </select>
+    </div>
   </div>
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="wins">Wins</label>
     <input type="number" class="form-control" [(ngModel)]="selectedTeam.numberOfWins" name="wins" id="wins" placeholder="Enter number of wins" />
   </div>
   <div class="form-group">
     <label for="losses">Losses</label>
     <input type="number" class="form-control" [(ngModel)]="selectedTeam.numberOfLosses" name="losses" id="losses" placeholder="Enter number of losses" />
-  </div>
+  </div>-->
   <button type="button" class="btn btn-primary" (click)="saveTeam()">Submit</button>
 </form>

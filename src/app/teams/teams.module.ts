@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { TeamsRoutingModule } from './teams.routing';
@@ -9,6 +9,6 @@ import { TeamEditComponent } from './team-edit/team-edit.component';
 
 @NgModule({
     declarations: [TeamListComponent, TeamEditComponent],
-    imports: [CommonModule, FormsModule, SharedModule, TeamsRoutingModule]
+    imports: [CommonModule, ReactiveFormsModule, SharedModule, TeamsRoutingModule]
 })
 export class TeamsModule { }
