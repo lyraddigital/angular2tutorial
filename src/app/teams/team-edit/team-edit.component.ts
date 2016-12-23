@@ -13,7 +13,7 @@ import { FormFieldsService } from '../../shared/forms/fields/form-fields.service
 export class TeamEditComponent {
   @Input()
   selectedTeam: Team;
-  formFields: FormField<any>[];
+  formFields: FormField[];
   teamEditForm: FormGroup;
 
   constructor(private formFieldsService: FormFieldsService) { }
@@ -23,18 +23,19 @@ export class TeamEditComponent {
     {
       this.formFields = this.formFieldsService.getFieldsForForm();
 
-      if(this.formFields && this.selectedTeam) {
-        let controls: any = {};
-          
-        this.formFields.forEach(field => {        
-          controls[field.key] = new FormControl(this.selectedTeam[field.key]);
-        });        
+      if(this.formFields && this.formFields.length > 0)
+      {
+        let controls = {};
 
-        this.teamEditForm = new FormGroup(controls);   
-      }    
-      else {      
+        this.formFields.forEach(field => {
+          controls[field.key] = new FormControl(this.selectedTeam[field.key]);
+        });
+
+        this.teamEditForm = new FormGroup(controls);
+      }
+      else {
         this.teamEditForm = new FormGroup({});
-      }      
+      }
     }
     else {
       this.teamEditForm = new FormGroup({});
@@ -42,11 +43,11 @@ export class TeamEditComponent {
   }
 
   saveTeam() {
-    // Save to the bound team so the table updates
-    this.selectedTeam.teamName = this.teamEditForm.value.teamName;
-    this.selectedTeam.numberOfWins = this.teamEditForm.value.numberOfWins;
-    this.selectedTeam.numberOfLosses = this.teamEditForm.value.numberOfLosses;
+    for(var propertyName in this.teamEditForm.value) {
+      this.selectedTeam[propertyName] = this.teamEditForm.value[propertyName];
+    }
 
-    this.selectedTeam = null;
+    // Ensure that the form closes.
+    this.selectedTeam = null; 
   }
 }

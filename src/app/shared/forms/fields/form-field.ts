@@ -1,11 +1,13 @@
-import { FormFieldType } from './form-field-type';
+import { FieldType } from './field-type';
 
-export class FormField<T> {
+export class FormField {
     key: string;
-    fieldType: FormFieldType
-    
-    constructor(key:string, fieldType: FormFieldType) {
+    label: string;
+    fieldType: FieldType
+
+    constructor(key: string, label: string, fieldType: FieldType) {
         this.key = key;
+        this.label = label;
         this.fieldType = fieldType;
     }
 }

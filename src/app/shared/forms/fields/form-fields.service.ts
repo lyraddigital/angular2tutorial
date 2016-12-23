@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 
 import { FormField } from './form-field';
-import { TextField } from './text-field';
-import { TextType } from './text-type';
+import { InputField } from './input-field';
+import { InputType } from './input-type';
 
 @Injectable()
 export class FormFieldsService {
-    getFieldsForForm(): FormField<any>[] {
-        let teamNameField = new TextField("teamName", TextType.Text);
-        let winsField = new TextField("numberOfWins", TextType.Number);
-        let lossField = new TextField("numberOfLosses", TextType.Number);
-        
-        return [teamNameField, winsField, lossField];
-    };
+  getFieldsForForm(): FormField[] {
+    let teamNameField = new InputField("teamName", "Team Name", InputType.Text, "Enter Team Name");
+    let numberOfWinsField = new InputField("numberOfWins", "Wins", InputType.Number, "Enter number of wins");
+    let numberOfLossesField = new InputField("numberOfLosses", "Losses", InputType.Number, "Enter number of losses");
+
+    return [teamNameField, numberOfWinsField, numberOfLossesField];
+  }
 }
