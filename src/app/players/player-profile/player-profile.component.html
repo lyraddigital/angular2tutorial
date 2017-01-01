@@ -1,10 +1,38 @@
-<div class="card" *ngIf="selectedPlayer">
-  <div class="card-block profile-heading">
-    <h4>{{selectedPlayer.firstName}} {{selectedPlayer.lastName}}</h4>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item"><strong>Position: </strong> {{selectedPlayer.position}}</li>
-    <li class="list-group-item"><strong>Height: </strong> {{selectedPlayer.height}}</li>
-    <li class="list-group-item"><strong>Weight: </strong> {{selectedPlayer.weight}} lbs</li>
-  </ul>
-</div>
+<player-profile *ngIf="selectedPlayer">
+  <profile-heading>{{selectedPlayer.firstName}} {{selectedPlayer.lastName}}</profile-heading>
+  <profile-details>
+    <profile-detail-entry>
+      <strong>Position: </strong> 
+      <span [style.display]="getDisplayFlag(!editPosition)">
+        {{selectedPlayer.position}}
+        <a (click)="showEditPosition()">Edit</a>
+      </span> 
+      <span [style.display]="getDisplayFlag(editPosition)">
+        <input type="text" [(ngModel)]="selectedPlayer.position" />
+        <button class="btn btnPrimary" (click)="savePosition()">Save</button>
+      </span>
+    </profile-detail-entry>
+    <profile-detail-entry>
+      <strong>Height: </strong> 
+      <span [style.display]="getDisplayFlag(!editHeight)">
+        {{selectedPlayer.height}}
+        <a (click)="showEditHeight()">Edit</a>
+      </span>
+      <span [style.display]="getDisplayFlag(editHeight)">
+        <input type="text" [(ngModel)]="selectedPlayer.height" />
+        <button class="btn btnPrimary" (click)="saveHeight()">Save</button>
+      </span>
+    </profile-detail-entry>
+    <profile-detail-entry>
+      <strong>Weight: </strong> 
+      <span [style.display]="getDisplayFlag(!editWeight)">
+        {{selectedPlayer.weight}} lbs
+        <a (click)="showEditWeight()">Edit</a>
+      </span>
+      <span [style.display]="getDisplayFlag(editWeight)">
+        <input type="text" [(ngModel)]="selectedPlayer.weight" />
+        <button class="btn btnPrimary" (click)="saveWeight()">Save</button>
+      </span>
+    </profile-detail-entry>
+  </profile-details>
+</player-profile>
