@@ -15,12 +15,14 @@ export class TeamEditComponent {
   selectedTeam: Team;
   formFields: FormField[];
   teamEditForm: FormGroup;
+  showNotEditing: boolean;
 
   constructor(private formFieldsService: FormFieldsService) { }
 
   ngOnChanges() {
     if(this.selectedTeam)
     {
+      this.showNotEditing = false;
       this.formFields = this.formFieldsService.getFieldsForForm();
 
       if(this.formFields && this.formFields.length > 0)

@@ -14,7 +14,7 @@
   <tbody>
     <tr *ngFor="let team of listOfTeams">
       <td>{{team.teamName}}</td>
-      <td>{{team.numberOfWins}}</td>
+      <td #wins>{{team.numberOfWins}}</td>
       <td>{{team.numberOfLosses}}</td>
       <td>{{team.winPercentage}}</td>
       <td>{{team.gamesBehind}}</td>
